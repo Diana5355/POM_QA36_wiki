@@ -1,6 +1,7 @@
 package tests;
 
 import manage.ConfigurationWiki;
+import manage.MyDataProvider;
 import model.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -46,7 +47,7 @@ public class Login extends ConfigurationWiki {
         Assert.assertEquals(infoOut, "Log out");
     }
 
-    @Test
+    @Test(dataProvider = "loginData", dataProviderClass = MyDataProvider.class)
     public void  login4(){
         User user = User.builder().userName("juliakliot.jk").password("Misha240613").build();
         String inf = new MainScreen(driver)
@@ -59,4 +60,4 @@ public class Login extends ConfigurationWiki {
                 .getInf();
         Assert.assertEquals(inf, "Log in to Wikipedia");
     }
-}
+}   
